@@ -17,5 +17,7 @@ export const POST_QUERY = gql`
       title
       body
     }
+    isEditMode @client
+    greeting @client
   }
 `

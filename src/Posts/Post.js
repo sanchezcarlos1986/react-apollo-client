@@ -9,17 +9,25 @@ function Post({ match }) {
       {({ loading, error, data }) => {
         if (loading) return <p>Loading...</p>
         if (error) return <p>Error...</p>
-        const { title, body } = data.post
+        const { post: { title, body }, isEditMode, greeting } = data
         return (
           <Fragment>
-            <section>
-              <h1 >{title}</h1>
-              <p >{body}</p>
-            </section> 
-            <section>
-              <h1 >Edit Post</h1>
-              <UpdatePost post={data.post} />
-            </section> 
+            {
+              isEditMode
+              ? (
+                  <section>
+                    <h1>Edit Post</h1>
+                    <UpdatePost post={data.post} />
+                  </section> 
+              )
+              : (
+                  <section>
+                    <h4>{greeting}</h4>
+                    <h1>{title}</h1>
+                    <p >{body}</p>
+                  </section>
+              )
+            }         
           </Fragment>
         )
       }}

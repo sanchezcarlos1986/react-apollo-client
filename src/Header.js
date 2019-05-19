@@ -6,10 +6,7 @@ import { Link } from 'react-router-dom'
 const Header = () => {
   const [current, setCurrent] = useState(null)
 
-  const handleClick = e => {
-    console.log('click ', e);
-    setCurrent(e.key)
-  }
+  const handleClick = e => setCurrent(e.key)
 
   return (
     <header>

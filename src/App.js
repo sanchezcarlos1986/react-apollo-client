@@ -8,8 +8,17 @@ import Posts from './Posts/Posts'
 import Post from './Posts/Post'
 import NewPost from './Posts/NewPost'
 
+const defaultState = {
+  greeting: 'Good morning!',
+  isEditMode: false
+}
+
 const client = new ApolloClient({
-  uri: 'https://api-useast.graphcms.com/v1/cjqtzxlhd2j3g01dnwortupa6/master'
+  uri: 'https://api-useast.graphcms.com/v1/cjqtzxlhd2j3g01dnwortupa6/master',
+  clientState: {
+    defaults: defaultState,
+    resolvers: {}
+  }
 })
 
 function App() {
