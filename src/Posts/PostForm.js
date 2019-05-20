@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
-function PostForm({ post, onSubmit }) {
+function PostForm({ post, onSubmit, onSuccess }) {
   const [id, setId] = useState('')
   const [title, setTitle] = useState('')
   const [body, setBody] = useState('')
@@ -21,10 +21,7 @@ function PostForm({ post, onSubmit }) {
       variables: {
         id, title, body
       }
-    })
-
-    setTitle('')
-    setBody('')
+    }).then(() => onSuccess())
   }
 
   return (
@@ -38,11 +35,13 @@ function PostForm({ post, onSubmit }) {
 
 PostForm.propTypes = {
   post: PropTypes.object,
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
+  onSuccess: PropTypes.func
 }
 
 PostForm.defaultProps = {
   post: {},
+  onSuccess: () => null,
   onSubmit: data => { console.warn(data) },
 }
 

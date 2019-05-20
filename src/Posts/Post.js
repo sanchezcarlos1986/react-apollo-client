@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import { Query } from 'react-apollo'
 import UpdatePost from './UpdatePost'
 import { POST_QUERY } from '../Queries'
+import EditMode from './EditMode'
 
 function Post({ match }) {
   return (
@@ -9,9 +10,10 @@ function Post({ match }) {
       {({ loading, error, data }) => {
         if (loading) return <p>Loading...</p>
         if (error) return <p>Error...</p>
-        const { post: { title, body }, isEditMode, greeting } = data
+        const { post: { title, body }, isEditMode } = data
         return (
           <Fragment>
+            <EditMode isEditMode={isEditMode} />
             {
               isEditMode
               ? (
@@ -22,7 +24,6 @@ function Post({ match }) {
               )
               : (
                   <section>
-                    <h4>{greeting}</h4>
                     <h1>{title}</h1>
                     <p >{body}</p>
                   </section>
