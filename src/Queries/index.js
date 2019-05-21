@@ -4,8 +4,9 @@ export const POSTS_QUERY = gql`
   query allPosts {
     posts {
       id
+      picture
       title
-      body
+      year
     }
   }
 `
@@ -13,11 +14,12 @@ export const POSTS_QUERY = gql`
 export const POST_QUERY = gql`
   query onePost($id: ID!) {
     post(where: { id: $id }) {
-      id
-      title
       body
+      id
+      picture
+      title
+      year
     }
     isEditMode @client
-    greeting @client
   }
 `
