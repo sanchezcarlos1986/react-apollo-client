@@ -28,7 +28,7 @@ function PostForm({ post, onSubmit, onSuccess }) {
   }
 
   return (
-    <Form layout="inline" onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <Form.Item>
         <Input
           prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -46,10 +46,10 @@ function PostForm({ post, onSubmit, onSuccess }) {
         />
       </Form.Item>
       <Form.Item>
-        <Input
-          type="textarea"
+        <Input.TextArea
           prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
           placeholder="Description"
+          autosize={{ minRows: 2, maxRows: 6 }}
           onChange={e => setBody(e.target.value)}
           value={body}
         />

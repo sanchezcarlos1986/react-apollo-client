@@ -18,3 +18,11 @@ code {
 a {
   color: white;
 }
+
+.ant-avatar img {
+  object-fit: cover;
+}
+
+section {
+  padding: 1em;
+}

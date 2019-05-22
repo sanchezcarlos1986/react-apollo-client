@@ -6,8 +6,6 @@ import Posts from './Posts/Posts'
 import Post from './Posts/Post'
 import NewPost from './Posts/NewPost'
 
-
-
 function App() {
   return (
     <Router>
