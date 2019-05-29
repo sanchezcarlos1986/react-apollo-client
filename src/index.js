@@ -18,7 +18,7 @@ const cache = new InMemoryCache()
 
 persistCache({
   cache,
-  storage: window.localStorage
+  storage: window.sessionStorage
 }).then(() => {
   const client = new ApolloClient({
     cache,

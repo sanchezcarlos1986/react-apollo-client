@@ -12,18 +12,22 @@ function Posts(){
         if (loading) return <p>Loading...</p>
         if (error) return <p>Error...</p>
         const { posts } = data
-        return posts.map(({ id, title, picture, year }) => (
-          <Card
-            key={id}
-            hoverable
-            style={{ width: 240 }}
-            cover={<img alt={title} src={picture} />}
-          >
-            <Link to={`/post/${id}`}>
-              <Card.Meta title={title} description={year} />
-            </Link>
-          </Card>
-        ))
+        return (
+          <div data-testid="Posts" className="Posts">
+            {
+              posts.map(({ id, title, picture, year }) => (
+                <Link key={id} to={`/post/${id}`}>
+                  <Card
+                    hoverable
+                    style={{ width: 240 }}
+                    cover={<img alt={title} src={picture} />}>
+                      <Card.Meta title={title} description={year} />
+                  </Card>
+                </Link>
+              ))
+            }
+          </div>
+        )
       }}
     </Query>     
   )

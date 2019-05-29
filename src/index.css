@@ -26,3 +26,7 @@ a {
 section {
   padding: 1em;
 }
+
+.Posts {
+  display: flex;
+}

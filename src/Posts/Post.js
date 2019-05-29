@@ -9,6 +9,9 @@ function Post({ match }) {
   return (
     <Query query={POST_QUERY} variables={{ id: match.params.id }}>
       {({ loading, error, data }) => {
+        console.log('data:', data)
+        console.log('error:', error)
+        console.log('loading:', loading)
         if (loading) return <p>Loading...</p>
         if (error) return <p>Error...</p>
         const { post: { title, body, picture, year }, isEditMode } = data
