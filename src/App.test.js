@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { cleanup } from 'react-testing-library'
-import App from './App'
+import { cleanup } from '@testing-library/react'
 import { MockedProvider } from 'react-apollo/test-utils'
+import App from './App'
 
 afterEach(cleanup)
 

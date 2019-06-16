@@ -5,7 +5,7 @@ import { Card } from 'antd'
 
 import { POSTS_QUERY } from '../Queries'
 
-function Posts(){
+function Posts() {
   return (
     <Query query={POSTS_QUERY}>
       {({ loading, error, data }) => {
@@ -15,13 +15,16 @@ function Posts(){
         return (
           <div data-testid="Posts" className="Posts">
             {
-              posts.map(({ id, title, picture, year }) => (
-                <Link key={id} to={`/post/${id}`}>
+              posts.map(({
+                id, title, picture, year
+              }) => (
+                <Link data-testid="post-item" key={id} to={`/post/${id}`}>
                   <Card
                     hoverable
                     style={{ width: 240 }}
-                    cover={<img alt={title} src={picture} />}>
-                      <Card.Meta title={title} description={year} />
+                    cover={<img data-testid="post-image" alt={title} src={picture} />}
+                  >
+                    <Card.Meta title={title} data-testid="post-description" description={year} />
                   </Card>
                 </Link>
               ))
@@ -29,7 +32,7 @@ function Posts(){
           </div>
         )
       }}
-    </Query>     
+    </Query>
   )
 }
 

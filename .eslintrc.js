@@ -29,6 +29,7 @@ module.exports = {
     "react-hooks/exhaustive-deps": "none"
   },
   "globals": {
+    "it": true,
     "test": true,
     "expect": true,
     "afterEach": true,

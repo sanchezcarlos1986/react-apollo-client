@@ -20,6 +20,5 @@ export const POST_QUERY = gql`
       title
       year
     }
-    isEditMode @client
   }
 `
