@@ -9,12 +9,6 @@ import { MockedProvider } from 'react-apollo/test-utils'
 import { POSTS_QUERY } from '../../Queries'
 import Posts from '../Posts'
 
-const originalError = console.error
-beforeAll(() => { console.error = jest.fn() })
-afterAll(() => { console.error = originalError })
-
-global.fetch = require('jest-fetch-mock')
-
 afterEach(cleanup)
 
 const mocks = [{
@@ -46,7 +40,7 @@ const mocks = [{
 
 test('<Posts /> with params', async () => {
   const {
-    getByText, getByTestId, getAllByTestId, debug,
+    getByText, getByTestId, getAllByTestId,
   } = render(
     <MockedProvider mocks={mocks} addTypename={false}>
       <MemoryRouter>
@@ -62,8 +56,7 @@ test('<Posts /> with params', async () => {
   expect(loading).toBeTruthy()
   await waitForElement(() => getAllByTestId('post-item'))
 
-  // Debug
-  debug()
+  // debug()
 
   const postsContainer = getByTestId('Posts')
   const postsItems = getAllByTestId('post-item')
