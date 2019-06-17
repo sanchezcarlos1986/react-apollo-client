@@ -24,7 +24,7 @@ function Posts() {
                     style={{ width: 240 }}
                     cover={<img data-testid="post-image" alt={title} src={picture} />}
                   >
-                    <Card.Meta title={title} data-testid="post-description" description={year} />
+                    <Card.Meta title={title} description={year} />
                   </Card>
                 </Link>
               ))

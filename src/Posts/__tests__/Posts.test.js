@@ -82,8 +82,21 @@ test('<Posts /> with params', async () => {
   expect(postsImages[0].getAttribute('src')).toBe(mockItems[0].picture)
   expect(postsImages[1].getAttribute('src')).toBe(mockItems[1].picture)
 
+  // Titles
+  /**
+   * Here I had to use a document selector to get the items,
+   * because I wasn't able to reach the library's divs
+   */
+  const postsTitle = document.querySelectorAll('.ant-card-meta-title')
+  expect(postsTitle[0]).toHaveTextContent(mockItems[0].title)
+  expect(postsTitle[1]).toHaveTextContent(mockItems[1].title)
+
   // Descriptions
-  // const postsDescription = getAllByTestId('post-description')
-  // expect(postsDescription[0].getAttribute('alt')).toBe(mockItems[0].title)
-  // expect(postsDescription[1].getAttribute('alt')).toBe(mockItems[1].title)
+  /**
+   * Here I had to use a document selector to get the items,
+   * because I wasn't able to reach the library's divs
+   */
+  const postsDescription = document.querySelectorAll('.ant-card-meta-description')
+  expect(postsDescription[0]).toHaveTextContent(mockItems[0].year)
+  expect(postsDescription[1]).toHaveTextContent(mockItems[1].year)
 })
