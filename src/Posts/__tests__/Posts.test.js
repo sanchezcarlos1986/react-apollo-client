@@ -61,6 +61,8 @@ test('<Posts /> with params', async () => {
 
   expect(loading).toBeTruthy()
   await waitForElement(() => getAllByTestId('post-item'))
+
+  // Debug
   debug()
 
   const postsContainer = getByTestId('Posts')

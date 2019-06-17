@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-
 import Header from './Header'
-import Posts from './Posts/Posts'
-import Post from './Posts/Post'
-import NewPost from './Posts/NewPost'
+// import Posts from './Posts/Posts'
+
+const Posts = lazy(() => import('./Posts/Posts'))
+const Post = lazy(() => import('./Posts/Post'))
+const NewPost = lazy(() => import('./Posts/NewPost'))
+
+function WaitingComponent(Component) {
+  return props => (
+    <Suspense fallback={<div>Cargando...</div>}>
+      <Component {...props} />
+    </Suspense>
+  )
+}
 
 function App() {
   return (
@@ -12,13 +21,13 @@ function App() {
       <div className="App">
         <Header />
         <Switch>
-          <Route exact path='/' component={Posts} />
-          <Route exact path='/post/:id' component={Post} />
-          <Route exact path='/posts/new' component={NewPost} />
-        </Switch> 
+          <Route exact path="/" component={WaitingComponent(Posts)} />
+          <Route exact path="/post/:id" component={WaitingComponent(Post)} />
+          <Route exact path="/posts/new" component={WaitingComponent(NewPost)} />
+        </Switch>
       </div>
     </Router>
-  );
+  )
 }
 
 export default App
